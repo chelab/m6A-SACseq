@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 
 dataconf=$1
-snakemake -j 60 -p --rerun-incomplete -s /opt/sacseq/Snakefile --configfiles /opt/sacseq/config.yaml ${dataconf} -p
+jobs=48
+if [[ $# -gt 1 ]]; then
+    jobs=$2
+fi
+snakemake -j ${jobs} -p --rerun-incomplete -s /opt/sacseq/Snakefile --configfiles /opt/sacseq/config.yaml ${dataconf} -p
