@@ -12,7 +12,7 @@ For reproducibility, source code and dependencies have been packaged into one [d
 
 It would be very simple to finish the whole analysis. Just 3 steps:
 
-1. Specific the path (with label) of both rawdata and references for your project in a YAML format. For example,
+1. **Specific the path (with label) of both rawdata and references for your project in a YAML format.** For example,
 
 <details>
   <summary>Save the following config into <code>data.yaml</code> file. <sup>(Click to expand)</sup></summary>
@@ -67,13 +67,13 @@ references:
 
 </details>
 
-2. Run all the analysis by one command:
+2. **Run all the analysis by one command**:
 
 ```bash
 singularity exec docker://y9ch/sacseq:latest sacseq data.yaml
 ```
 
-3. View the analysic report (`./results/report.html`) and use the m6A sites for downstream analysis.
+3. **View the analysic report (`./results/report.html`) and use the m6A sites for downstream analysis**.
 
 ## Documentation
 
