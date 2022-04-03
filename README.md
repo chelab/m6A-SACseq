@@ -1,6 +1,5 @@
 [![Docker](https://img.shields.io/docker/pulls/y9ch/sacseq.svg)](https://hub.docker.com/r/y9ch/sacseq)
 
-
 # m6A-SAC-seq
 
 ## Overview of the workflow
@@ -40,6 +39,28 @@ samples:
           R2: ./rawdata/HeLa-WT-polyA-treated-rep2-run1_R2.fq.gz
         - R1: ./rawdata/HeLa-WT-polyA-treated-rep2-run2_R1.fq.gz
           R2: ./rawdata/HeLa-WT-polyA-treated-rep2-run2_R2.fq.gz
+
+references:
+  spike:
+    fa: ./ref/spike-in.fa
+    bt2: ./ref/spike-in.fa
+  spikeN:
+    blast: ./ref/spike-in_with_N
+  rRNA:
+    fa: ./ref/Homo_sapiens.GRCh38.rRNA.fa
+    bt2: ./ref/Homo_sapiens.GRCh38.rRNA
+  smallRNA:
+    fa: ./ref/Homo_sapiens.GRCh38.smallRNA.fa
+    bt2: ./ref/Homo_sapiens.GRCh38.smallRNA
+  genome:
+    fa: ./ref/Homo_sapiens.GRCh38.genome.fa
+    star: ./ref/Homo_sapiens.GRCh38.genome
+    gtf: ./ref/Homo_sapiens.GRCh38.genome.gtf
+    fai: ./ref/Homo_sapiens.GRCh38.genome.fa.fai
+    gtf_collapse: ./ref/Homo_sapiens.GRCh38.genome.collapse.gtf
+  contamination:
+    fa: ./ref/contamination.fa
+    bt2: ./ref/contamination
 ```
 
 - Then run all the analysis by one command:

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-cd /data
 dataconf=$1
-snakemake -j 60 -p --rerun-incomplete -s /opt/sacseq/Snakefile --configfiles ${dataconf} /opt/sacseq/config.yaml -p
+snakemake -j 60 -p --rerun-incomplete -s /opt/sacseq/Snakefile --configfiles /opt/sacseq/config.yaml ${dataconf} -p

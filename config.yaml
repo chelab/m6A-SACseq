@@ -1,30 +1,6 @@
+srcdir: /opt/sacseq/bin
 datadir: ../rawdata
-srcdir: ../src
 refdir: ../ref
-
-contamination:
-  all:
-    fa: contamination.fa
-    bt2: contamination
-
-ref_GRCh38:
-  spike:
-    fa: spike-in.fa
-    bt2: spike-in.fa
-  spikeN:
-    blast: spike-in_with_N
-  rRNA:
-    fa: Homo_sapiens.GRCh38.rRNA.fa
-    bt2: Homo_sapiens.GRCh38.rRNA
-  smallRNA:
-    fa: /Homo_sapiens.GRCh38.smallRNA.fa
-    bt2: Homo_sapiens.GRCh38.smallRNA
-  genome:
-    fa: Homo_sapiens.GRCh38.genome.fa
-    star: Homo_sapiens.GRCh38.genome
-    gtf: Homo_sapiens.GRCh38.genome.gtf
-    fai: Homo_sapiens.GRCh38.genome.fa.fai
-    gtf_collapse: Homo_sapiens.GRCh38.genome.collapse.gtf
 
 path:
   bowtie2: /opt/miniconda/bin/bowtie2

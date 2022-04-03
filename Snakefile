@@ -1,16 +1,26 @@
+import sys
 from collections import defaultdict
 
 bed_number = config["bed_number"]
+src_dir = config["srcdir"]
 
-data_dir = os.path.dirname(workflow.overwrite_configfiles[0])
+data_dir = os.path.dirname(workflow.overwrite_configfiles[-1])
+ref_dir = data_dir
+
+if "samples" not in config:
+    sys.exit("`samples` is not defined in config file!")
+
+if "references" not in config:
+    sys.exit("`references` is not defined in config file!")
+
 # print(os.path.join(data_dir, "/tmp"))
 # print(workflow.basedir)
 
 
-workdir: "workspace_sacseq"
+workdir: "results"
 
 
-REF = config["ref_GRCh38"]
+REF = config["references"]
 
 
 group2sample = defaultdict(list)
@@ -201,9 +211,7 @@ rule map_to_contamination_by_bowtie2:
         report="bowtie2_mapping/{rn}_contamination.report",
     params:
         path_bowtie2=config["path"]["bowtie2"],
-        ref_bowtie2=lambda wildcards: os.path.join(
-            config["refdir"], config["contamination"]["all"]["bt2"]
-        ),
+        ref_bowtie2=lambda wildcards: os.path.join(ref_dir, REF["contamination"]["bt2"]),
         un="bowtie2_mapping/{rn}_contamination.fq",
     threads: 24
     resources:
@@ -229,9 +237,7 @@ rule map_to_spike_by_bowtie2:
         report="bowtie2_mapping/{rn}_spike.report",
     params:
         path_bowtie2=config["path"]["bowtie2"],
-        ref_bowtie2=lambda wildcards: os.path.join(
-            config["refdir"], REF["spike"]["bt2"]
-        ),
+        ref_bowtie2=lambda wildcards: os.path.join(ref_dir, REF["spike"]["bt2"]),
         un="bowtie2_mapping/{rn}_spike.fq",
     threads: 24
     resources:
@@ -256,7 +262,7 @@ rule map_to_rRNA_by_bowtie2:
         report="bowtie2_mapping/{rn}_rRNA.report",
     params:
         path_bowtie2=config["path"]["bowtie2"],
-        ref_bowtie2=lambda wildcards: os.path.join(config["refdir"], REF["rRNA"]["bt2"]),
+        ref_bowtie2=lambda wildcards: os.path.join(ref_dir, REF["rRNA"]["bt2"]),
         un="bowtie2_mapping/{rn}_rRNA.fq",
     threads: 24
     resources:
@@ -281,9 +287,7 @@ rule map_to_smallRNA_by_bowtie2:
         report="bowtie2_mapping/{rn}_smallRNA.report",
     params:
         path_bowtie2=config["path"]["bowtie2"],
-        ref_bowtie2=lambda wildcards: os.path.join(
-            config["refdir"], REF["smallRNA"]["bt2"]
-        ),
+        ref_bowtie2=lambda wildcards: os.path.join(ref_dir, REF["smallRNA"]["bt2"]),
         un="bowtie2_mapping/{rn}_smallRNA.fq",
     threads: 24
     resources:
@@ -328,7 +332,7 @@ rule map_to_genome_by_star:
         fq_1=temp("star_mapping/{rn}_genome_Unmapped.out.mate1"),
         fq_2=temp("star_mapping/{rn}_genome_Unmapped.out.mate2"),
     params:
-        star_ref=lambda wildcards: os.path.join(config["refdir"], REF["genome"]["star"]),
+        star_ref=lambda wildcards: os.path.join(ref_dir, REF["genome"]["star"]),
         star_path=config["path"]["star"],
         output_pre="star_mapping/{rn}_genome_",
         bam="star_mapping/{rn}_genome_Aligned.sortedByCoord.out.bam",
@@ -451,9 +455,11 @@ rule count_cutadapt_reads:
         ],
     output:
         "stat_reads/{sample}.tsv",
+    params:
+        py=os.path.join(src_dir, "parse_cutadapt_report.py"),
     shell:
         """
-        ../src/parse_cutadapt_report.py {input} >{output}
+        {params.py} {input} >{output}
         """
 
 
@@ -606,9 +612,7 @@ rule rnaseq_qc:
     output:
         "rnaseq_qc/{sample}.metrics.tsv",
     params:
-        gtf=lambda wildcards: os.path.join(
-            config["refdir"], REF["genome"]["gtf_collapse"]
-        ),
+        gtf=lambda wildcards: os.path.join(ref_dir, REF["genome"]["gtf_collapse"]),
         path_rnaseqc=config["path"]["rnaseqc"],
         outdir="rnaseq_qc",
     shell:
@@ -701,9 +705,7 @@ rule map_to_spikin_by_blastn:
     output:
         temp("spike_aligned/{sample}.xml"),
     params:
-        ref_blast=lambda wildcards: os.path.join(
-            config["refdir"], REF["spikeN"]["blast"]
-        ),
+        ref_blast=lambda wildcards: os.path.join(ref_dir, REF["spikeN"]["blast"]),
     threads: 24
     resources:
         mem="48G",
@@ -751,7 +753,7 @@ rule call_mutation_of_spike:
     output:
         "spike_aligned/{sample}.tsv.gz",
     params:
-        call=os.path.join(config["srcdir"], "call_spike_mutation.py"),
+        call=os.path.join(src_dir, "call_spike_mutation.py"),
         header="\t".join(["ref", "motif", "base", "count"]),
     threads: 4
     resources:
@@ -778,7 +780,7 @@ rule count_genome_multiple:
     output:
         "count_reads/genome_single.count",
     params:
-        gtf=lambda wildcards: os.path.join(config["refdir"], REF["genome"]["gtf"]),
+        gtf=lambda wildcards: os.path.join(ref_dir, REF["genome"]["gtf"]),
         path_featureCounts=config["path"]["featureCounts"],
     threads: 32
     resources:
@@ -801,9 +803,7 @@ rule get_covered_positions_by_group:
         "count_depth_by_sample/{sample}_{reftype}.tsv.gz",
     params:
         path_samtools=config["path"]["samtools"],
-        ref=lambda wildcards: os.path.join(
-            config["refdir"], REF[wildcards.reftype]["fa"]
-        ),
+        ref=lambda wildcards: os.path.join(ref_dir, REF[wildcards.reftype]["fa"]),
     threads: 1
     resources:
         mem="4G",
@@ -830,9 +830,7 @@ rule get_mutation_positions_by_group:
     params:
         path_bedtools=config["path"]["bedtools"],
         path_rnaseqmut=config["path"]["rnaseqmut"],
-        ref=lambda wildcards: os.path.join(
-            config["refdir"], REF[wildcards.reftype]["fa"]
-        ),
+        ref=lambda wildcards: os.path.join(ref_dir, REF[wildcards.reftype]["fa"]),
         max_mismatch=5,
         # report_indel=" -d ",
         report_indel="",
@@ -933,9 +931,7 @@ rule count_bases_by_group_splited:
     params:
         path_samtools=config["path"]["samtools"],
         path_cpup=config["path"]["cpup"],
-        ref=lambda wildcards: os.path.join(
-            config["refdir"], REF[wildcards.reftype]["fa"]
-        ),
+        ref=lambda wildcards: os.path.join(ref_dir, REF[wildcards.reftype]["fa"]),
     threads: 2
     resources:
         mem="16G",
@@ -981,7 +977,7 @@ rule calculate_sites:
     resources:
         mem="12G",
     params:
-        py=os.path.join(config["srcdir"], "calculate_sites.py"),
+        py=os.path.join(src_dir, "calculate_sites.py"),
     shell:
         """
         {params.py} {input} {output}
@@ -994,10 +990,8 @@ rule filter_sites:
     output:
         "pileup_filtered_by_group/{group}_{reftype}.tsv.gz",
     params:
-        py=os.path.join(config["srcdir"], "stat_and_filter_sites.py"),
-        fa=lambda wildcards: os.path.join(
-            config["refdir"], REF[wildcards.reftype]["fa"]
-        ),
+        py=os.path.join(src_dir, "stat_and_filter_sites.py"),
+        fa=lambda wildcards: os.path.join(ref_dir, REF[wildcards.reftype]["fa"]),
     resources:
         mem="12G",
     shell:
