@@ -5,4 +5,4 @@ jobs=48
 if [[ $# -gt 1 ]]; then
     jobs=$2
 fi
-snakemake -j ${jobs} -p --rerun-incomplete -s /opt/sacseq/Snakefile --configfiles /opt/sacseq/config.yaml ${dataconf} -p
+FLASK_ENV=development snakemake -j ${jobs} -q --rerun-incomplete -s /opt/sacseq/Snakefile --configfiles /opt/sacseq/config.yaml ${dataconf}
