@@ -753,7 +753,7 @@ rule call_mutation_of_spike:
     output:
         "spike_aligned/{sample}.tsv.gz",
     params:
-        call=os.path.join(src_dir, "call_spike_mutation.py"),
+        py=os.path.join(src_dir, "call_spike_mutation.py"),
         header="\t".join(["ref", "motif", "base", "count"]),
     threads: 4
     resources:
@@ -762,7 +762,7 @@ rule call_mutation_of_spike:
         """
         (
           echo {params.header:q}
-          {params.call} {input} | awk '{{ t[$0]++ }} END{{ for (i in t) print t[i],i }}' | awk 'BEGIN{{OFS="\\t"}}{{print $2,$3,$4,$1}}'
+          {params.py} {input} | awk '{{ t[$0]++ }} END{{ for (i in t) print t[i],i }}' | awk 'BEGIN{{OFS="\\t"}}{{print $2,$3,$4,$1}}'
         ) | bgzip -@ {threads} -l 9 >{output}
         """
 
