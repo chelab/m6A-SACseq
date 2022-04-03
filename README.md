@@ -12,8 +12,11 @@ For reproducibility, source code and dependencies have been packaged into one [d
 
 It would be very simple to finish the whole analysis. Just 3 steps:
 
-1. Specific the path (with label) of both rawdata and references for your project in a yaml file. For example,
+1. Specific the path (with label) of both rawdata and references for your project in a YAML format. For example,
 
+<details>
+  <summary>Save the following config into `data.yaml` file. (*Click to expand*)</summary>
+  
 ```yaml
 samples:
   HeLa-WT:
@@ -39,7 +42,6 @@ samples:
           R2: ./rawdata/HeLa-WT-polyA-treated-rep2-run1_R2.fq.gz
         - R1: ./rawdata/HeLa-WT-polyA-treated-rep2-run2_R1.fq.gz
           R2: ./rawdata/HeLa-WT-polyA-treated-rep2-run2_R2.fq.gz
-
 references:
   spike:
     fa: ./ref/spike-in.fa
@@ -62,6 +64,8 @@ references:
     fa: ./ref/contamination.fa
     bt2: ./ref/contamination
 ```
+
+</details>
 
 2. Run all the analysis by one command:
 
