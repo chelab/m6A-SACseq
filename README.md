@@ -4,6 +4,7 @@
 
 ## Overview of the workflow
 
+![scheme](./docs/scheme.svg#gh-dark-mode-only)
 <img src="./docs/scheme.svg" alt="scheme" style="gh-light-mode-only">
 <img src="./docs/scheme.svg" alt="scheme" style="filter: invert(1);gh-dark-mode-only">
 
