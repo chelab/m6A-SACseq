@@ -15,7 +15,7 @@ It would be very simple to finish the whole analysis. Just 3 steps:
 1. Specific the path (with label) of both rawdata and references for your project in a YAML format. For example,
 
 <details>
-  <summary>Save the following config into `data.yaml` file. (*Click to expand*)</summary>
+  <summary>Save the following config into <code>data.yaml</code> file. <sup>(Click to expand)</sup></summary>
   
 ```yaml
 samples:
