@@ -12,9 +12,7 @@ For reproducibility, source code and dependencies have been packaged into one [d
 
 It would be very simple to finish the whole analysis. Just 3 steps:
 
-1. Specific the path and the label of your data a yaml file:
-
-for example,
+1. Specific the path (with label) of both rawdata and references for your project in a yaml file. For example,
 
 ```yaml
 samples:
