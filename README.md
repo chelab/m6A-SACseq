@@ -4,13 +4,15 @@
 
 ## Overview of the workflow
 
+1.
+
 ## How to use?
 
-For reproducibility, source code and dependencies have been packaged into one [docker image](https://hub.docker.com/r/y9ch/sacseq).
+For reproducibility, source code and dependencies have been packaged into one [docker image](https://hub.docker.com/r/y9ch/sacseq). You can run it thought [singularity](https://sylabs.io/singularity) container runtime.
 
-You can run it thought [singularity](https://sylabs.io/singularity) container runtime.
+It would be very simple to finish the whole analysis. Just 3 steps:
 
-- Specific the path and the label of your data a yaml file:
+1. Specific the path and the label of your data a yaml file:
 
 for example,
 
@@ -63,11 +65,13 @@ references:
     bt2: ./ref/contamination
 ```
 
-- Then run all the analysis by one command:
+2. Run all the analysis by one command:
 
 ```bash
 singularity exec docker://y9ch/sacseq:latest sacseq data.yaml
 ```
+
+3. View the analysic report (`./results/report.html`) and use the m6A sites for downstream analysis.
 
 ## Documentation
 
@@ -75,4 +79,4 @@ https://github.com/y9c/m6A-SACseq/wiki
 
 ## Citation
 
-- (nbt)
+- Hu, L., Liu, S., Peng, Y. et al. m6A RNA modifications are measured at single-base resolution across the mammalian transcriptome. Nat Biotechnol (2022). https://doi.org/10.1038/s41587-022-01243-z
