@@ -1,9 +1,13 @@
 FROM ubuntu:20.04
 RUN echo "This is a analysis pipelie for SAC-seq data" > /README.md
-ENV PATH="/opt/miniconda/bin:$PATH"
+
+ENV PATH="/opt/sacseq/bin:/opt/miniconda/bin:$PATH"
 
 # install system dependencies
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y --no-install-recommends install tzdata apt-utils wget git make cmake xsltproc gcc g++ pkg-config zlib1g-dev python3 python3-distutils default-jre
+# install pip
+# wget https://bootstrap.pypa.io/get-pip.py -O /tmp/get-pip.py
+# python3 /tmp/get-pip.py
 # install miniconda
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.11.0-Linux-x86_64.sh -O /tmp/miniconda.sh && bash /tmp/miniconda.sh -b -p /opt/miniconda && rm -rf /tmp/miniconda.sh && export PATH="/opt/miniconda/bin:$PATH"
 # install package by conda
@@ -19,4 +23,10 @@ RUN git clone https://github.com/Daniel-Liu-c0deb0t/UMICollapse.git /opt/UMIColl
 # install cpup
 RUN git clone https://github.com/y9c/cpup.git /opt/cpup && make -C /opt/cpup/ -j
 RUN rm -rf /var/lib/apt/lists/* && apt-get purge -y wget git make cmake xsltproc gcc g++ pkg-config && apt-get clean
+
 RUN mkdir -p /data
+WORKDIR /data
+ADD ./bin /opt/sacseq/bin
+COPY ./sacseq /opt/sacseq/bin/sacseq
+COPY ./Snakefile /opt/sacseq/Snakefile
+COPY ./config.yaml /opt/sacseq/config.yaml

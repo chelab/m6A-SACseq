@@ -1,0 +1,50 @@
+datadir: ../rawdata
+srcdir: ../src
+refdir: ../ref
+
+contamination:
+  all:
+    fa: contamination.fa
+    bt2: contamination
+
+ref_GRCh38:
+  spike:
+    fa: spike-in.fa
+    bt2: spike-in.fa
+  spikeN:
+    blast: spike-in_with_N
+  rRNA:
+    fa: Homo_sapiens.GRCh38.rRNA.fa
+    bt2: Homo_sapiens.GRCh38.rRNA
+  smallRNA:
+    fa: /Homo_sapiens.GRCh38.smallRNA.fa
+    bt2: Homo_sapiens.GRCh38.smallRNA
+  genome:
+    fa: Homo_sapiens.GRCh38.genome.fa
+    star: Homo_sapiens.GRCh38.genome
+    gtf: Homo_sapiens.GRCh38.genome.gtf
+    fai: Homo_sapiens.GRCh38.genome.fa.fai
+    gtf_collapse: Homo_sapiens.GRCh38.genome.collapse.gtf
+
+path:
+  bowtie2: /opt/miniconda/bin/bowtie2
+  star: /opt/miniconda/bin/STAR
+  samtools: /opt/miniconda/bin/samtools
+  bedtools: /opt/miniconda/bin/bedtools
+  rnaseqc: /opt/rnaseqc
+  blast2bam: /opt/blast2bam/bin/blast2bam
+  rnaseqmut: /opt/rnaseqmut/bin/rnaseqmut
+  umicollapse: /opt/UMICollapse/umicollapse.jar
+  featureCounts: /opt/miniconda/bin/featureCounts
+  cpup: /opt/cpup/cpup
+
+barcode:
+  barcode3_r1: AGATCGGAAGAGCACACGTCTG
+  barcode3_r2: AGATCGGAAGAGCGTCGTGT
+  # remove (primer 5->3) on begin of R1, `-g`
+  # remove (primer 5->3) on begin of R2, `-g`
+  RT_primer_F: ACACGACGCTCTTCCGATCT
+  # remove (primer 3->5) on end of R1, `-a`
+  RT_primer_R: AGATCGGAAGAGCGTCGTGT
+
+bed_number: 24
