@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# Copyright © 2022 Ye Chang yech1990@gmail.com
+# Distributed under terms of the GNU license.
+#
+# Created: 2022-04-04 18:49
+
 
 # Set default values
 conf="data.yaml"
@@ -35,7 +41,4 @@ if [ "$#" != 0 ]; then
   shift  # $EOL
 fi
 
-if [[ $# -gt 1 ]]; then
-    jobs=$2
-fi
 FLASK_ENV=development snakemake -j ${jobs} -q --rerun-incomplete -s /opt/sacseq/Snakefile --configfiles /opt/sacseq/config.yaml ${conf}
