@@ -2,6 +2,7 @@
 layout: default
 title: Home
 nav_exclude: true
+permalink: index.html
 ---
 
 # m6A-SACseq
