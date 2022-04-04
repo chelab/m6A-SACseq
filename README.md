@@ -1,4 +1,7 @@
 [![Docker](https://img.shields.io/docker/pulls/y9ch/sacseq.svg)](https://hub.docker.com/r/y9ch/sacseq)
+[![DOI:10.1038/s41587-022-01243-z](https://zenodo.org/badge/DOI/10.1038/s41587-022-01243-z.svg)](https://doi.org/10.1038/s41587-022-01243-z)
+[![Citation Badge](https://api.juleskreuer.eu/citation-badge.php?doi=10.1038/s41587-022-01243-z)](https://juleskreuer.eu/projekte/citation-badge/)
+
 
 # m6A-SAC-seq
 
