@@ -1,8 +1,41 @@
 #!/usr/bin/env bash
 
-dataconf=$1
+# Set default values
+conf="data.yaml"
 jobs=48
+
+# https://stackoverflow.com/a/62616466/5693642
+# Convenience functions.
+usage_error () { echo >&2 "$(basename $0):  $1"; exit 2; }
+assert_argument () { test "$1" != "$EOL" || usage_error "$2 requires an argument"; }
+
+# One loop, nothing more.
+if [ "$#" != 0 ]; then
+  EOL=$(echo '\01\03\03\07')
+  set -- "$@" "$EOL"
+  while [ "$1" != "$EOL" ]; do
+    opt="$1"; shift
+    case "$opt" in
+
+      # Your options go here.
+      -q|--quite) quite='true';;
+      -j|--jobs) assert_argument "$1" "$opt"; jobs="$1"; shift;;
+      -c|--conf) assert_argument "$1" "$opt"; conf="$1"; shift;;
+
+      # Arguments processing. You may remove any unneeded line after the 1st.
+      -|''|[!-]*) set -- "$@" "$opt";;                                          # positional argument, rotate to the end
+      --*=*)      set -- "${opt%%=*}" "${opt#*=}" "$@";;                        # convert '--name=arg' to '--name' 'arg'
+      -[!-]?*)    set -- $(echo "${opt#-}" | sed 's/\(.\)/ -\1/g') "$@";;       # convert '-abc' to '-a' '-b' '-c'
+      --)         while [ "$1" != "$EOL" ]; do set -- "$@" "$1"; shift; done;;  # process remaining arguments as positional
+      -*)         usage_error "unknown option: '$opt'";;                        # catch misspelled options
+      *)          usage_error "this should NEVER happen ($opt)";;               # sanity test for previous patterns
+
+    esac
+  done
+  shift  # $EOL
+fi
+
 if [[ $# -gt 1 ]]; then
     jobs=$2
 fi
-FLASK_ENV=development snakemake -j ${jobs} -q --rerun-incomplete -s /opt/sacseq/Snakefile --configfiles /opt/sacseq/config.yaml ${dataconf}
+FLASK_ENV=development snakemake -j ${jobs} -q --rerun-incomplete -s /opt/sacseq/Snakefile --configfiles /opt/sacseq/config.yaml ${conf}

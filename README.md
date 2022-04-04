@@ -79,8 +79,15 @@ references:
 2. **Run all the analysis by one command**:
 
 ```bash
-singularity exec docker://y9ch/sacseq:latest sacseq data.yaml
+singularity exec docker://y9ch/sacseq:latest sacseq
 ```
+
+<details>
+  <summary>Read the documentation about how to customize.<sup>(Click to expand)</sup></summary>
+> default config file: `data.yaml`
+> default output dir: `./results`
+> default jobs in parallel: 48
+</details>
 
 3. **View the analytics report and use the m<sup>6</sup>A sites for downstream analysis**.
 

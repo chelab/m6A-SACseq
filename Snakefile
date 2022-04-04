@@ -1,6 +1,8 @@
 import sys
 from collections import defaultdict
 
+workdir: config["workdir"]
+
 bed_number = config["bed_number"]
 src_dir = config["srcdir"]
 
@@ -13,13 +15,10 @@ if "samples" not in config:
 if "references" not in config:
     sys.exit("`references` is not defined in config file!")
 
+REF = config["references"]
 # print(workflow.basedir)
 
 
-workdir: "results"
-
-
-REF = config["references"]
 
 
 group2sample = defaultdict(list)
