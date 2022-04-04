@@ -80,7 +80,9 @@ references:
 singularity exec docker://y9ch/sacseq:latest sacseq data.yaml
 ```
 
-3. **View the analytics report (`./results/report.html`) and use the m6A sites for downstream analysis**.
+3. **View the analytics report and use the m6A sites for downstream analysis**.
+
+The output of all the steps will be in one folder (`./results`) under the current path. A webpage report of all the analysis will be in `./results/report.html` (<sup>[example](https://y9c.github.io/m6A-SACseq/demo_output.html)</sup>.
 
 ## Documentation
 
