@@ -4,8 +4,8 @@
 
 ## Overview of the workflow
 
-[![scheme](./docs/scheme.svg#gh-light-mode-only)](https://y9c.github.io/m6A-SACseq/Overall-Workflow)
-[![scheme](./docs/scheme_dark.svg#gh-dark-mode-only)](https://y9c.github.io/m6A-SACseq/Overall-Workflow)
+[![scheme](./docs/scheme.svg)](https://y9c.github.io/m6A-SACseq/Overall-Workflow)#gh-light-mode-only
+[![scheme](./docs/scheme_dark.svg)](https://y9c.github.io/m6A-SACseq/Overall-Workflow)#gh-dark-mode-only
 
 ## How to use?
 
