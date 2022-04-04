@@ -1,8 +1,6 @@
 ---
 title: Overall Workflow
-parent: Introduction
-has_children: true
-nav_order: 1
+nav_exclude: false
 ---
 
 # Overall Workflow

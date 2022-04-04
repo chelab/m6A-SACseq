@@ -1,7 +1,7 @@
 ---
-title: Introduction
-has_children: true
-nav_order: 2
+layout: default
+title: Home
+nav_exclude: true
 ---
 
 # m6A-SACseq
