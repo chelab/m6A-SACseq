@@ -19,11 +19,11 @@ For reproducibility, source code and dependencies have been packaged into one [d
 
 It would be very simple to finish the whole analysis. Just 3 steps:
 
-1. **Specific the path (with label) of both rawdata and references for your project in a YAML format.** For example,
+1. **Specific the path (with label) of both rawdata and references for your project in a YAML format.**
 
 <details>
-  <summary>Save the following config into <code>data.yaml</code> file. <sup>(Click to expand)</sup></summary>
-  
+  <summary>`data.yaml` for example<sup>(Click to expand)</sup></summary>.</summary>
+
 ```yaml
 samples:
   HeLa-WT:
@@ -82,7 +82,7 @@ singularity exec docker://y9ch/sacseq:latest sacseq data.yaml
 
 3. **View the analytics report and use the m6A sites for downstream analysis**.
 
-The output of all the steps will be in one folder (`./results`) under the current path. A webpage report of all the analysis will be in `./results/report.html` (<sup>[example](https://y9c.github.io/m6A-SACseq/demo_output.html)</sup>.
+The output of all the steps will be in one folder (`./results`) under the current path. A webpage report of all the analysis will be in `./results/report.html` <sup>([example](https://y9c.github.io/m6A-SACseq/demo_output.html))</sup>.
 
 ## Documentation
 
