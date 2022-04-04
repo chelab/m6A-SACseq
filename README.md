@@ -24,7 +24,7 @@ The entire analysis can be completed in just three steps:
 1. **Specific the path (with label) of both rawdata and references for your project in a YAML format.**
 
 <details>
-  <summary><code>data.yaml</code> for example<sup>(Click to expand)</sup></summary>
+  <summary><code>data.yaml</code> for example.<sup>(Click to expand)</sup></summary>
 
 ```yaml
 samples:
