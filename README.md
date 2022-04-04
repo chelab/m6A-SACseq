@@ -2,7 +2,7 @@
 [![DOI:10.1038/s41587-022-01243-z](https://zenodo.org/badge/DOI/10.1038/s41587-022-01243-z.svg)](https://doi.org/10.1038/s41587-022-01243-z)
 [![Citation Badge](https://api.juleskreuer.eu/citation-badge.php?doi=10.1038/s41587-022-01243-z)](https://www.nature.com/articles/s41587-022-01243-z/metrics)
 
-# m6A-SAC-seq
+# m<sup>6</sup>A-SAC-seq
 
 ## Overview of the workflow
 
@@ -17,9 +17,9 @@
 
 ## How to use?
 
-For reproducibility, source code and dependencies have been packaged into one [docker image](https://hub.docker.com/r/y9ch/sacseq). You can run it thought [singularity](https://sylabs.io/singularity) container runtime.
+A [docker image] (https://hub.docker.com/r/y9ch/sacseq) containing the source code and dependencies has been published for reproducibility. You can run it using the [singularity](https://sylabs.io/singularity) container runtime.
 
-It would be very simple to finish the whole analysis. Just 3 steps:
+The entire analysis can be completed in just three steps:
 
 1. **Specific the path (with label) of both rawdata and references for your project in a YAML format.**
 
@@ -82,7 +82,7 @@ references:
 singularity exec docker://y9ch/sacseq:latest sacseq data.yaml
 ```
 
-3. **View the analytics report and use the m6A sites for downstream analysis**.
+3. **View the analytics report and use the m<sup>6</sup>A sites for downstream analysis**.
 
 The output of all the steps will be in one folder (`./results`) under the current path. A webpage report of all the analysis will be in `./results/report.html` <sup>([example](https://y9c.github.io/m6A-SACseq/demo_output.html))</sup>.
 
@@ -92,4 +92,4 @@ https://y9c.github.io/m6A-SACseq/
 
 ## Citation
 
-- Hu, L., Liu, S., Peng, Y. et al. m6A RNA modifications are measured at single-base resolution across the mammalian transcriptome. Nat Biotechnol (2022). https://doi.org/10.1038/s41587-022-01243-z
+- Hu, L., Liu, S., Peng, Y. et al. m<sup>6</sup>A RNA modifications are measured at single-base resolution across the mammalian transcriptome. Nat Biotechnol (2022). https://doi.org/10.1038/s41587-022-01243-z
