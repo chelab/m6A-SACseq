@@ -1,11 +1,16 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#
+# Copyright © 2022 Ye Chang yech1990@gmail.com
+# Distributed under terms of the GNU license.
+#
+# Created: 2022-04-03 20:30
+
+"""parse the cutadapt report."""
 
 import re
 import sys
 
-# "../workspace_human_cellline/cut_adapter/HEK293-WT-polyA-input-rep1-run1_step1.report",
-# "../workspace_human_cellline/cut_adapter/HEK293-WT-polyA-input-rep1-run1_step2.report",
 files = sys.argv[1:]
 counts = {"N": 0, "S": 0, "T": 0}
 for i, fi in enumerate(files):

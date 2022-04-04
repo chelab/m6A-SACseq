@@ -13,7 +13,6 @@ if "samples" not in config:
 if "references" not in config:
     sys.exit("`references` is not defined in config file!")
 
-# print(os.path.join(data_dir, "/tmp"))
 # print(workflow.basedir)
 
 
