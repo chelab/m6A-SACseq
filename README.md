@@ -17,7 +17,7 @@
 
 ## How to use?
 
-A [docker image] (https://hub.docker.com/r/y9ch/sacseq) containing the source code and dependencies has been published for reproducibility. You can run it using the [singularity](https://sylabs.io/singularity) container runtime.
+A [docker image](https://hub.docker.com/r/y9ch/sacseq) containing the source code and dependencies has been published for reproducibility. You can run it using the [singularity](https://sylabs.io/singularity) container runtime.
 
 The entire analysis can be completed in just three steps:
 
