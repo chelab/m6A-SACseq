@@ -24,7 +24,7 @@ The entire analysis can be completed in just three steps:
 1. **Specific the path (with label) of both rawdata and references for your project in a YAML format.**
 
 <details>
-  <summary><code>data.yaml</code> for example.<sup>(Click to expand)</sup></summary>
+  <summary><code>data.yaml</code> for example<sup>(Click to expand)</sup></summary>
 
 ```yaml
 samples:
@@ -74,6 +74,8 @@ references:
     bt2: ./ref/contamination
 ```
 
+_Read the [documentation](https://y9c.github.io/m6A-SACseq/Step-by-step-instruction.html#refer-rawdata-and-references-in-the-configuration-file) on how to customize._
+
 </details>
 
 2. **Run all the analysis by one command**:
@@ -83,13 +85,13 @@ singularity exec docker://y9ch/sacseq:latest sacseq
 ```
 
 <details>
-  <summary>Run default settings.<sup>(Click to expand)</sup></summary>
+  <summary>default settings<sup>(Click to expand)</sup></summary>
 
 - default config file: `data.yaml`
 - default output dir: `./results`
 - default jobs in parallel: `48`
 
-Read the [documentation](https://y9c.github.io/m6A-SACseq/) on how to customize.
+_Read the [documentation](https://y9c.github.io/m6A-SACseq/Step-by-step-instruction.html#customized-analysis-parameters) on how to customize._
 
 </details>
 
