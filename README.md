@@ -87,7 +87,7 @@ singularity exec docker://y9ch/sacseq:latest sacseq
 
 - default config file: `data.yaml`
 - default output dir: `./results`
-- default jobs in parallel: 48
+- default jobs in parallel: `48`
 
 Read the [documentation](https://y9c.github.io/m6A-SACseq/) on how to customize.
 
