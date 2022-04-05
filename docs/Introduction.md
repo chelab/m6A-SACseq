@@ -8,3 +8,5 @@ nav_order: 1
 # Introduction
 {: .fs-9 }
 <!-- prettier-ignore-end -->
+
+![scheme](scheme.svg)
