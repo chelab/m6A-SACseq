@@ -22,7 +22,7 @@ configuration
 {: .label .label-green }
 
 ```markdown
-{: .info }
+{: .note }
 How to refer the rawdata in the YAML file?
 ```
 
@@ -41,7 +41,7 @@ The rawdata can be defined under the `samples` config group.
   In addition, if you add new sequencing data for your library, you can append a new record to the list. After that, the pipeline will automatically re-run some of the steps with **only the new data**, saving computation resources.
 
 ```markdown
-{: .info }
+{: .note }
 How to refer the reference/index in the YAML file?
 ```
 
