@@ -17,7 +17,7 @@ A Method for Assaying m<sup>6</sup>A Epigenetic Modifications at Single Base Res
 
 ## Table of Content
 
-[Overall-Workflow](Overall-Workflow)
+[Introduction](Introduction)
 
 [Run-the-pipeline](Run-the-pipeline)
 
