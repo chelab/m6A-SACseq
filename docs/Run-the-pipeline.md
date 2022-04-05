@@ -134,7 +134,7 @@ references:
 configuration
 {: .label .label-blue }
 
-- threads
+- threads (jobs)
 
 ```yaml
 jobs: 48
