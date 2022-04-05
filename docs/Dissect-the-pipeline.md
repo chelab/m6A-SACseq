@@ -1,6 +1,7 @@
 ---
 title: Dissect the pipeline
 nav_exclude: false
+nav_order: 3
 ---
 
 <!-- prettier-ignore-start -->
