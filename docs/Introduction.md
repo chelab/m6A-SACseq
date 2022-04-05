@@ -9,4 +9,14 @@ nav_order: 1
 {: .fs-9 }
 <!-- prettier-ignore-end -->
 
-![scheme](scheme.svg)
+## Mechanism
+
+![scheme_mechanism](scheme_mechanism.svg)
+
+## Protocol
+
+![scheme_protocol](scheme_protocol.svg)
+
+## Pipeline
+
+![scheme_pipeline](scheme_pipeline.svg)

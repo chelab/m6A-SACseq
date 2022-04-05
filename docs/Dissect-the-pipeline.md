@@ -9,7 +9,7 @@ nav_order: 3
 {: .fs-9 }
 <!-- prettier-ignore-end -->
 
-Design and Technical Concern of Pipeline
+Design and Technical Concern of the Pipeline
 {: .fs-6 .fw-300 }
 
 ![pipeline](pipeline.png)
