@@ -1,12 +1,15 @@
 ---
-title: Step by Step Instruction
+title: Run the pipeline
 nav_exclude: false
 ---
 
 <!-- prettier-ignore-start -->
-# Step by Step Instruction
+# Run the pipeline
 {: .fs-9 }
 <!-- prettier-ignore-end -->
+
+Step by Step Instruction
+{: .fs-6 .fw-300 }
 
 ## Prepare references
 
@@ -14,12 +17,21 @@ data
 {: .label .label-green }
 
 - download fasta
+
+```bash
+wget ....
+```
+
 - build index
+
+```bash
+bowtie2 ....
+```
 
 ## Refer rawdata and references in the configuration file
 
 configuration
-{: .label .label-green }
+{: .label .label-blue }
 
 {: .note }
 How to refer the rawdata in the YAML file?
@@ -85,15 +97,55 @@ samples:
           R2: ./rawdata/HeLa-KO-treat-rep1-run1_R2.fq.gz
 ```
 
-\*_NOTE: in the example, there are 2 replicates for HeLa-WT. For HeLa-WT (input/treated) rep1 library, there are 3 sequencing run. Data for the sample library will be combined for analysis._
+_NOTE: in the example, there are 2 replicates for HeLa-WT. For HeLa-WT (input/treated) rep1 library, there are 3 sequencing run. Data for the sample library will be combined for analysis._
 
 {: .note }
 How to refer the reference/index in the YAML file?
 
+Such as the example below.
+
+```yaml
+references:
+  spike:
+    fa: ./ref/spike-in.fa
+    bt2: ./ref/spike-in.fa
+  spikeN:
+    blast: ./ref/spike-in_with_N
+  rRNA:
+    fa: ./ref/Homo_sapiens.GRCh38.rRNA.fa
+    bt2: ./ref/Homo_sapiens.GRCh38.rRNA
+  smallRNA:
+    fa: ./ref/Homo_sapiens.GRCh38.smallRNA.fa
+    bt2: ./ref/Homo_sapiens.GRCh38.smallRNA
+  genome:
+    fa: ./ref/Homo_sapiens.GRCh38.genome.fa
+    star: ./ref/Homo_sapiens.GRCh38.genome
+    gtf: ./ref/Homo_sapiens.GRCh38.genome.gtf
+    fai: ./ref/Homo_sapiens.GRCh38.genome.fa.fai
+    gtf_collapse: ./ref/Homo_sapiens.GRCh38.genome.collapse.gtf
+  contamination:
+    fa: ./ref/contamination.fa
+    bt2: ./ref/contamination
+```
+
 ## Customized analysis parameters
 
 configuration
-{: .label .label-green }
+{: .label .label-blue }
 
 - threads
+
+```yaml
+jobs: 48
+```
+
 - output (workdir)
+
+```yaml
+workdir: ./results
+```
+
+## Run the pipeline
+
+- How to use singularity?
+- HPC envirentment

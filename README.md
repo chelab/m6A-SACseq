@@ -74,7 +74,7 @@ The entire analysis can be completed in just three steps:
        bt2: ./ref/contamination
    ```
 
-   _Read the [documentation](https://y9c.github.io/m6A-SACseq/Step-by-step-instruction.html#refer-rawdata-and-references-in-the-configuration-file) on how to customize._
+   _Read the [documentation](https://y9c.github.io/m6A-SACseq/Run-the-pipeline.html#refer-rawdata-and-references-in-the-configuration-file) on how to customize._
 
    </details>
 
@@ -91,7 +91,7 @@ The entire analysis can be completed in just three steps:
    - default output dir: `./results`
    - default jobs in parallel: `48`
 
-   _Read the [documentation](https://y9c.github.io/m6A-SACseq/Step-by-step-instruction.html#customized-analysis-parameters) on how to customize._
+   _Read the [documentation](https://y9c.github.io/m6A-SACseq/Run-the-pipeline.html#customized-analysis-parameters) on how to customize._
 
    </details>
 
