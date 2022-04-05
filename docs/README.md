@@ -25,8 +25,6 @@ A Method for Assaying m<sup>6</sup>A Epigenetic Modifications at Single Base Res
 
 ## Overall Workflow
 
-![pipeline](pipeline.png)
-
 ### Quality control:
 
 We will first perform read trimming to remove adapters, primer sequences, molecular barcode (UMI), and low-quality bases using the `cutadapt` software.
