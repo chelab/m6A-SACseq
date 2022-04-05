@@ -21,10 +21,8 @@ data
 configuration
 {: .label .label-green }
 
-```markdown
 {: .note }
 How to refer the rawdata in the YAML file?
-```
 
 The rawdata can be defined under the `samples` config group.
 
@@ -40,10 +38,8 @@ The rawdata can be defined under the `samples` config group.
   Note that this level is a list instead of a single value, so you can group multiple sequencing runs together, and the pipeline will automatically combine the data for the same library.
   In addition, if you add new sequencing data for your library, you can append a new record to the list. After that, the pipeline will automatically re-run some of the steps with **only the new data**, saving computation resources.
 
-```markdown
 {: .note }
 How to refer the reference/index in the YAML file?
-```
 
 ## Customized analysis parameters
 
