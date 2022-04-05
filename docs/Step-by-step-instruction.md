@@ -36,6 +36,7 @@ The rawdata can be defined under the `samples` config group.
 - The 4th level is the `{SAMPLE_ID}` tag.
   Since you can have multiple replicates in the experiment design, the `{SAMPLE_ID}` can be `rep1`, `rep2`, `rep3`... or some other uniuqe labels.
 - The 5th level is a **list** of paired sequencing data.
+  Read1 and Read2 are labeled after `R1` and `R2` respectively.
   Note that this level is a list instead of a single value, so you can group multiple sequencing runs together, and the pipeline will automatically combine the data for the same library.
   In addition, if you add new sequencing data for your library, you can append a new record to the list. After that, the pipeline will automatically re-run some of the steps with **only the new data**, saving computation resources.
 
