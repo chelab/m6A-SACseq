@@ -26,6 +26,15 @@ How to refer the rawdata in the YAML file?
 
 The rawdata can be defined under the `samples` config group.
 
+```yaml
+samples:
+  { <code>REPLACE_WITH_YOUR_GROUP_ID</code> }:
+    { <code>input</code> | <code>treated</code> }:
+      { <code>REPLACE_WITH_YOUR_SAMPLE_ID</code> }:
+        - R1: <code>file path</code>
+          R2: <code>file path</code>
+```
+
 - The 1st level is the `samples` tag.
 - The 2nd level is the `{GROUP_ID}` tag.
   You can classify your samples into different groups, and the label `{GROUP_ID}` can be customized. For example, you can have a `HeLa-WT` and a `HeLa-KO` group for different data. These labels will be used to name the intermediate and final results of the analysis.
@@ -37,6 +46,46 @@ The rawdata can be defined under the `samples` config group.
   Read1 and Read2 are labeled after `R1` and `R2` respectively.
   Note that this level is a list instead of a single value, so you can group multiple sequencing runs together, and the pipeline will automatically combine the data for the same library.
   In addition, if you add new sequencing data for your library, you can append a new record to the list. After that, the pipeline will automatically re-run some of the steps with **only the new data**, saving computation resources.
+
+All levels can have multiple records. Such as the example below.
+
+```yaml
+samples:
+  HeLa-WT:
+    input:
+      rep1:
+        - R1: ./rawdata/HeLa-WT-input-rep1-run1_R1.fq.gz
+          R2: ./rawdata/HeLa-WT-input-rep1-run1_R2.fq.gz
+        - R1: ./rawdata/HeLa-WT-input-rep1-run2_R1.fq.gz
+          R2: ./rawdata/HeLa-WT-input-rep1-run2_R2.fq.gz
+        - R1: ./rawdata/HeLa-WT-input-rep1-run3_R1.fq.gz
+          R2: ./rawdata/HeLa-WT-input-rep1-run3_R2.fq.gz
+      rep2:
+        - R1: ./rawdata/HeLa-WT-input-rep2-run1_R1.fq.gz
+          R2: ./rawdata/HeLa-WT-input-rep2-run1_R2.fq.gz
+    treated:
+      rep1:
+        - R1: ./rawdata/HeLa-WT-treat-rep1-run1_R1.fq.gz
+          R2: ./rawdata/HeLa-WT-treat-rep1-run1_R2.fq.gz
+        - R1: ./rawdata/HeLa-WT-treat-rep1-run2_R1.fq.gz
+          R2: ./rawdata/HeLa-WT-treat-rep1-run2_R2.fq.gz
+        - R1: ./rawdata/HeLa-WT-treat-rep1-run3_R1.fq.gz
+          R2: ./rawdata/HeLa-WT-treat-rep1-run3_R2.fq.gz
+      rep2:
+        - R1: ./rawdata/HeLa-WT-treat-rep2-run1_R1.fq.gz
+          R2: ./rawdata/HeLa-WT-treat-rep2-run1_R2.fq.gz
+  HeLa-KO:
+    input:
+      rep1:
+        - R1: ./rawdata/HeLa-KO-input-rep1-run1_R1.fq.gz
+          R2: ./rawdata/HeLa-KO-input-rep1-run1_R2.fq.gz
+    treated:
+      rep1:
+        - R1: ./rawdata/HeLa-KO-treat-rep1-run1_R1.fq.gz
+          R2: ./rawdata/HeLa-KO-treat-rep1-run1_R2.fq.gz
+```
+
+\*_NOTE: in the example, there are 2 replicates for HeLa-WT. For HeLa-WT (input/treated) rep1 library, there are 3 sequencing run. Data for the sample library will be combined for analysis._
 
 {: .note }
 How to refer the reference/index in the YAML file?
