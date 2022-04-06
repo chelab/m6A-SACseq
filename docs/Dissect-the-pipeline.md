@@ -14,8 +14,9 @@ Design and Technical Concern of the Pipeline
 
 ![pipeline](pipeline.png)
 
-## Aligiment parameters
+## Alignment parameters
 
-## Mutatin calling
+## Mutation calling
 
-## m6A sites filtering
+## m<sup>6</sup>A sites filtering
+
