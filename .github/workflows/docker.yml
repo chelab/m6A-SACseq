@@ -41,7 +41,7 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: |
-            my-docker-hub-namespace/my-docker-hub-repository
+            y9ch/sacseq
             ghcr.io/${{ github.repository }}
 
       - name: Build and push Docker images
@@ -49,5 +49,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: latest
           labels: ${{ steps.meta.outputs.labels }}
